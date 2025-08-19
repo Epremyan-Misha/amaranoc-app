@@ -10,7 +10,7 @@ const footerBgStyle: React.CSSProperties = {
 function Footer(): JSX.Element {
   return (
     <div
-      className="h-[800px] bg-cover bg-no-repeat bg-center flex justify-center items-start pt-[300px]"
+      className="bg-cover bg-no-repeat bg-center flex justify-center items-start pt-[150px] min-h-[800px]"
       style={footerBgStyle}
     >
       <div className="w-[85%] max-w-[1200px] h-[450px] bg-[rgba(30,30,30,0.85)] rounded-[25px] px-8 py-10 flex flex-col items-center">

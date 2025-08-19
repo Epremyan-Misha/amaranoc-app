@@ -4,7 +4,7 @@ function PagesImg(): JSX.Element {
   return (
     <>
       <img
-        className="cursor-pointer mt-[2250px] -ml-[700px] w-[250px] h-[60px]"
+        className="cursor-pointer mt-[2400px] -ml-[700px] w-[250px] h-[60px] -m-10"
         src="images/pages.png"
         alt="Pages"
       />

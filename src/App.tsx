@@ -1,4 +1,6 @@
-import React from "react";
+// App.tsx
+
+import React, { useState } from "react";
 import Head from "./layout/Header";
 import Body from "./layout/Body";
 import Footer from "./layout/Footer";
@@ -9,6 +11,12 @@ import { AuthProvider } from "./authContext";
 import ProtectedRoute from "./ProtectedRoute";
 
 const App: React.FC = () => {
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
   return (
     <AuthProvider>
       <Router>
@@ -20,8 +28,8 @@ const App: React.FC = () => {
             element={
               <ProtectedRoute>
                 <>
-                  <Head />
-                  <Body />
+                  <Head searchValue={searchValue} onSearchChange={handleSearchChange} />
+                  <Body searchValue={searchValue} />
                   <Footer />
                 </>
               </ProtectedRoute>

@@ -32,7 +32,7 @@ function Options(): JSX.Element {
   }, []);
 
   return (
-   <div className="flex ml-[-580px] w-[1050px] h-[120px] mt-[50px] border-b border-b-[1px] border-b-[rgb(196,193,193)] border-t border-t-[1px] border-t-[rgb(196,192,192)]">
+   <div className="flex ml-[350px] w-[1050px] h-[120px] mt-[50px] border-b border-b-[1px] border-b-[rgb(196,193,193)] border-t border-t-[1px] border-t-[rgb(196,192,192)]">
   <div className="cursor-pointer ml-[15px] mt-[15px] group">
     <img className="ml-[25px]" src="/imagesForOptions/nkar1.png" alt="Առանձնատներ" />
     <p className="border-b-[3px] border-orange-500 w-fit mx-auto">

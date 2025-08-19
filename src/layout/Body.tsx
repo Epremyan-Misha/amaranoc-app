@@ -9,12 +9,14 @@ import PeopleRooms from "../components/ComponentForPeopleRooms";
 import BathRoom from "../components/ComponentForBathroom";
 import Pool from "../components/ComponentForPool";
 import AdvantagesMain from "../components/Advantages";
-import Houses from "../components/ComponentHouses";
 import Options from "../components/OptionsComponent";
 import PagesImg from "../components/ComponentPages";
 import CourseInputsAndPrace from "../components/ComponentForCourseInputsAndPrace";
 import useBodyLogic from "../components/ComponentBodyLogic";
-function Body() {
+import AppLayoutManager from "../components/AppLayoutManager";
+
+// ✅ Ստանում ենք searchValue որպես prop
+function Body({ searchValue }: { searchValue: string }) {
   const {
     count,
     countWithNight,
@@ -26,10 +28,14 @@ function Body() {
   } = useBodyLogic();
 
   return (
-    <>
+    <div
+      className="w-full"
+      style={{ minHeight: "calc(100vh - 150px)" }} // Կարգավորիր ըստ Head+Footer-ի բարձրության
+    >
       <MapBody />
-      <div className="flex -mt-24">
-        <div className="p-4 border-2 border-[rgb(196,193,193)] border-solid w-80 h-[1467px] ml-14 -mt-27 rounded-2xl">
+      <div className="flex flex-row gap-6 mt-6 px-6 max-w-[1440px] mx-auto">
+        <div className="w-[320px] border border-gray-300 rounded-2xl p-4 h-fit bg-white shadow-md -mt-[200px]">
+          <Options />
           <BodyInfo />
           <CourseInputsAndPrace />
           <PeopleCount
@@ -49,11 +55,14 @@ function Body() {
           <Pool />
           <AdvantagesMain />
         </div>
-        <Houses />
-        <PagesImg />
-        <Options />
+
+        <div className="flex-1 flex flex-col gap-6">
+          {/* ✅ Փոխանցում ենք AppLayoutManager-ին */}
+          <AppLayoutManager searchValue={searchValue} />
+          <PagesImg />
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
