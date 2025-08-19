@@ -21,8 +21,6 @@ function Options(): JSX.Element {
       .then(data => {
         const formatted = Array.isArray(data) ? data : Object.values(data);
         console.log("✅ productsImg:", formatted);
-
-        // Պահում ենք image-ները, ինչպես կա՝ "photo/nkar 2.png"
         const cleaned = formatted.map((item: Product) => ({
           title: item.title,
           image: item.image?.trim(),

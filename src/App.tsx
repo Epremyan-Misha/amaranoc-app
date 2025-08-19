@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "./layout/Header";
 import Body from "./layout/Body";
 import Footer from "./layout/Footer";
@@ -6,7 +7,6 @@ import Register from "./Register";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./authContext";
 import ProtectedRoute from "./ProtectedRoute";
-import React from "react";
 
 const App: React.FC = () => {
   return (
