@@ -20,7 +20,7 @@ interface HousesProps {
 
 function Houses({ layout, searchValue }: HousesProps) {
   const [homeImages, setHomeImages] = useState<HomeImage[]>([]);
-  const [isLoading, setIsLoading] = useState(true); // ✅ Loading state
+  const [isLoading, setIsLoading] = useState(true); 
 
   const favorites = useFavoritesStore((s) => s.favorites);
   const addFavorite = useFavoritesStore((s) => s.addFavorite);
@@ -33,7 +33,7 @@ function Houses({ layout, searchValue }: HousesProps) {
       .then((res) => res.json())
       .then((data) => {
         setHomeImages(Array.isArray(data) ? data : Object.values(data));
-        setIsLoading(false); // ✅ Տվյալները բեռնված են
+        setIsLoading(false); 
       })
       .catch((error) => {
         console.error(error);

@@ -24,7 +24,7 @@ function ProductCard({ id, title, image }: ProductCardProps) {
     } else {
       addFavorite({ id, title, image });
     }
-    setModalOpen(true); // modal բացել սրտիկի սեղմման դեպքում
+    setModalOpen(true); 
   };
 
   const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {

@@ -1,5 +1,3 @@
-// components/ComponentForHead.tsx
-
 import React from "react";
 
 export function Logo() {

@@ -15,7 +15,6 @@ import CourseInputsAndPrace from "../components/ComponentForCourseInputsAndPrace
 import useBodyLogic from "../components/ComponentBodyLogic";
 import AppLayoutManager from "../components/AppLayoutManager";
 
-// ✅ Ստանում ենք searchValue որպես prop
 function Body({ searchValue }: { searchValue: string }) {
   const {
     count,
@@ -30,7 +29,7 @@ function Body({ searchValue }: { searchValue: string }) {
   return (
     <div
       className="w-full"
-      style={{ minHeight: "calc(100vh - 150px)" }} // Կարգավորիր ըստ Head+Footer-ի բարձրության
+      style={{ minHeight: "calc(100vh - 150px)" }}
     >
       <MapBody />
       <div className="flex flex-row gap-6 mt-6 px-6 max-w-[1440px] mx-auto">
@@ -57,7 +56,6 @@ function Body({ searchValue }: { searchValue: string }) {
         </div>
 
         <div className="flex-1 flex flex-col gap-6">
-          {/* ✅ Փոխանցում ենք AppLayoutManager-ին */}
           <AppLayoutManager searchValue={searchValue} />
           <PagesImg />
         </div>

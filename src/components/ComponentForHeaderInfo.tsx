@@ -32,7 +32,6 @@ function HeaderInfo() {
 
   return (
     <div className="flex items-center gap-6 relative z-50">
-      {/* Header buttons */}
       {infoForHeader.map((info, index) => (
         <h4
           key={info.id ?? index}
@@ -42,7 +41,6 @@ function HeaderInfo() {
         </h4>
       ))}
 
-      {/* Logout link */}
       <Link
         to="/login"
         className="text-red-600 -mt-4 hover:border-b-2 border-red-500 pb-1"
@@ -50,7 +48,6 @@ function HeaderInfo() {
         Դուրս գալ
       </Link>
 
-      {/* Favorites Button & Modal */}
       <div
         className="relative cursor-pointer -mt-4"
         onClick={() => setModalOpen(!isModalOpen)}
@@ -61,7 +58,6 @@ function HeaderInfo() {
           className="w-8 h-8"
         />
 
-        {/* Modal */}
         {isModalOpen && (
           <div className="absolute right-0 mt-4 w-[400px] max-h-[500px] overflow-y-auto bg-white rounded-lg shadow-xl p-6 z-50 border border-gray-300">
             <h3 className="text-lg font-semibold mb-4">Ընտրյալներ</h3>
