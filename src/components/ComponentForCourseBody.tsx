@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../index.css";
+import { useFilterStore } from "../store/filterStore";
 
 const baseUrl = "https://myproject-73982-default-rtdb.firebaseio.com/";
 
@@ -10,6 +11,7 @@ interface CourseItem {
 
 function Course() {
   const [courses, setCourses] = useState<CourseItem[]>([]);
+  const { currency, setCurrency } = useFilterStore();
 
   useEffect(() => {
     fetch(`${baseUrl}courses.json`)
@@ -27,7 +29,10 @@ function Course() {
       {courses.map((info) => (
         <p
           key={info.id}
-          className="cursor-pointer w-[50px] m-[10px] h-[30px] border border-black rounded-[45px] text-center ml-[10px] transition duration-1000 hover:bg-[gainsboro]"
+          onClick={() => setCurrency(info.title)}
+          className={`cursor-pointer w-[50px] m-[10px] h-[30px] border border-black rounded-[45px] text-center ml-[10px] transition duration-500 hover:bg-[gainsboro] ${
+            currency === info.title ? "bg-[gainsboro]" : ""
+          }`}
         >
           {info.title}
         </p>
