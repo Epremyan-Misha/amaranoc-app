@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import "../index.css";
 import { useFavoritesStore } from "../store/useFavoritesStore";
 import { useFilterStore } from "../store/filterStore";
-import { useHousesStore } from "../store/useHousesStore"; 
+import { useHousesStore } from "../store/useHousesStore";
 import HouseCardSkeleton from "../components/skeletons/HouseCardSkeleton";
-import PeopleCount from "./ComponentForPeopleCount";
 
 interface HomeImage {
   image: string;
@@ -12,6 +11,9 @@ interface HomeImage {
   people: number | string;
   prace: string;
   id?: string | number;
+  nightStay?: boolean;
+  rooms?: number;
+  poolType?: string;
 }
 
 const baseUrl = "https://myproject-73982-default-rtdb.firebaseio.com/";
@@ -37,17 +39,33 @@ function Houses({ layout, searchValue }: HousesProps) {
   const isFavorite = useFavoritesStore((s) => s.isFavorite);
   const setModalOpen = useFavoritesStore((s) => s.setModalOpen);
 
-  const { minPrice, maxPrice, currency, peopleCount, setPeopleCount } = useFilterStore();
+  const { minPrice, maxPrice, currency, peopleCount, nightStay, roomsCount, poolType } =
+    useFilterStore();
 
-  const incrementPeople = () => setPeopleCount(peopleCount + 1);
-  const decrementPeople = () => setPeopleCount(Math.max(0, peopleCount - 1));
+  const poolTypes = ["Բաց", "Փակ", "Տաքացվող", "Առանց լողավազան"];
 
+  // ✅ բերում ենք տները և ավելացնում ռանդոմ սենյակներ ու լողավազանի տեսակ
   useEffect(() => {
     setIsLoading(true);
     fetch(`${baseUrl}homeImages.json`)
       .then((res) => res.json())
       .then((data) => {
-        setHomeImages(Array.isArray(data) ? data : Object.values(data));
+        const homes = Array.isArray(data) ? data : Object.values(data);
+
+        const normalizedHomes = homes.map((h: any) => ({
+          ...h,
+          nightStay: h.night === true,
+          rooms:
+            h.rooms && Number(h.rooms) > 0
+              ? Number(h.rooms)
+              : Math.floor(Math.random() * 5) + 1, // 1–5 ռանդոմ սենյակ
+          poolType:
+            h.poolType && poolTypes.includes(h.poolType)
+              ? h.poolType
+              : poolTypes[Math.floor(Math.random() * poolTypes.length)], // ռանդոմ լողավազան
+        }));
+
+        setHomeImages(normalizedHomes);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -62,12 +80,22 @@ function Houses({ layout, searchValue }: HousesProps) {
       const t = setTimeout(() => setIsFiltering(false), 400);
       return () => clearTimeout(t);
     }
-  }, [searchValue, minPrice, maxPrice, currency, peopleCount, isLoading, setIsFiltering]);
+  }, [
+    searchValue,
+    minPrice,
+    maxPrice,
+    currency,
+    peopleCount,
+    nightStay,
+    roomsCount,
+    poolType,
+    isLoading,
+    setIsFiltering,
+  ]);
 
   const parsePrice = (prace: string) => {
     const match = prace.match(/([\d\s,._]+)\s*([Դ֏$€₽]?)/);
     if (!match) return { price: 0, curr: "" };
-
     const price = parseInt(match[1].replace(/[\s,._]/g, ""), 10);
     const curr = match[2] || "";
     return { price, curr };
@@ -79,7 +107,6 @@ function Houses({ layout, searchValue }: HousesProps) {
     )
     .filter((home) => {
       const { price, curr } = parsePrice(home.prace);
-
       if (minPrice !== null && price < minPrice) return false;
       if (maxPrice !== null && price > maxPrice) return false;
       if (currency === "Դ" && curr !== "Դ") return false;
@@ -89,6 +116,16 @@ function Houses({ layout, searchValue }: HousesProps) {
         10
       );
       if (peopleCount > 0 && homePeople < peopleCount) return false;
+
+      if (nightStay === "yes" && home.nightStay !== true) return false;
+      if (nightStay === "no" && home.nightStay !== false) return false;
+
+      // ✅ սենյակների ֆիլտր
+      if (roomsCount > 0 && home.rooms < roomsCount) return false;
+
+      // ✅ լողավազանի ֆիլտր
+      if (poolType && poolType !== "Բոլորը" && home.poolType !== poolType)
+        return false;
 
       return true;
     });
@@ -126,7 +163,10 @@ function Houses({ layout, searchValue }: HousesProps) {
                   <div className="overflow-hidden rounded-[25px]">
                     <img
                       className="w-full h-auto rounded-[5px]"
-                      src={`/housesImages/${img.image.replace("housesPhoto/", "")}`}
+                      src={`/housesImages/${img.image.replace(
+                        "housesPhoto/",
+                        ""
+                      )}`}
                       alt={img.title}
                       onError={(e) =>
                         (e.currentTarget.src = "/images/default.png")
@@ -142,7 +182,7 @@ function Houses({ layout, searchValue }: HousesProps) {
                         setModalOpen(!isFavorite(id));
                       }}
                     >
-       <img src={
+                      <img src={
                     favorite
                       ? "data:image/png;base64,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"
                       : "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZD0iTTExLjk5IDIwLjI4bC0xLjQtMS4yYy00LjY3LTMuOTEtNy43LTYuNTItNy43LTkuMWE0LjkyIDQuOTIgMCAwIDEgMy4xLTQuNDQgNS4xOSA1LjE5IDAgMCAxIDMuOTQgMS4yIDUuMTkgNS4xOSAwIDAgMSAzLjk0LTEuMiA0LjkyIDQuOTIgMCAwIDEgMy4xIDQuNDQgMTIgMTIgMCAwIDEtNy43IDkuMSIgc3Ryb2tlPSJyZWQiIGZpbGw9Im5vbmUiLz48L3N2Zz4="
@@ -155,6 +195,8 @@ function Houses({ layout, searchValue }: HousesProps) {
                     <div className="mt-2 ml-3">
                       <h2 className="font-bold text-lg">{img.title}</h2>
                       <p>{img.people} people</p>
+                      <p>{img.rooms} սենյակ</p>
+                      <p>{img.poolType}</p>
                       <p className="ml-40 text-2xl">{img.prace}</p>
                     </div>
                   </div>
@@ -168,3 +210,10 @@ function Houses({ layout, searchValue }: HousesProps) {
 
 export default Houses;
 
+
+
+
+
+
+
+      

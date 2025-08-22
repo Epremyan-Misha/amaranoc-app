@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
-import { getAuth } from "firebase/auth"; // ✅ Ավելացրու սա
+import { getAuth } from "firebase/auth"; 
 
 const firebaseConfig = {
   apiKey: "AIzaSyAPXGWHUuV9mB-8gK0i5UVl7oZ1Mq1qEn0",
@@ -16,5 +16,4 @@ const app = initializeApp(firebaseConfig);
 
 export const db = getDatabase(app);
 
-// ✅ Ահա սա է լուծումը
 export const auth = getAuth(app);

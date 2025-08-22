@@ -4,7 +4,6 @@ import BodyInfo from "../components/ComponentForBodyInfo";
 import MapBody from "../components/ComponentForMapBody";
 import PeopleCount from "../components/ComponentForPeopleCount";
 import Night from "../components/ComponentForNight";
-import PeopleCountWithNight from "../components/ComponentForPeopleCountWithNight";
 import PeopleRooms from "../components/ComponentForPeopleRooms";
 import BathRoom from "../components/ComponentForBathroom";
 import Pool from "../components/ComponentForPool";
@@ -43,12 +42,6 @@ function Body({ searchValue }: { searchValue: string }) {
             onDecrement={handleDecrement}
           />
           <Night />
-          <PeopleCountWithNight
-            countWithNight={countWithNight}
-            onIncrement={handleIncrementForNight}
-            onDecrement={handleDecrementForNight}
-            delivery={delivery}
-          />
           <PeopleRooms />
           <BathRoom />
           <Pool />
