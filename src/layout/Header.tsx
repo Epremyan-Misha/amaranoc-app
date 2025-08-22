@@ -33,7 +33,7 @@ function Head({ searchValue, onSearchChange }: HeadProps): JSX.Element {
 
   return (
     <div
-      className={`bg-white fixed top-0 left-0 z-50 w-full transition-transform duration-300 flex gap-20 shadow-md px-6 py-4 ${
+      className={`bg-white fixed top-0 left-0 z-50 w-full transition-transform duration-300 flex gap-20 shadow-md px-6 py-4 h-30 ${
         showHeader ? 'translate-y-0' : '-translate-y-full'
       }`}
     >

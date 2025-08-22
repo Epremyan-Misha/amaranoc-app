@@ -42,7 +42,7 @@ function BodyInfo() {
 
   return (
     <>
-      <h3 className="ml-6 -mt-30">Տարածաշրջան</h3>
+      <h3 className="ml-6 -mt-33">Տարածաշրջան</h3>
       <div className="border-b border-b-[rgb(233,231,231)] border-b-[1px]">
         <div className="cursor-pointer ml-[25px] text-[rgb(75,74,74)] max-h-[200px] overflow-y-auto pr-2">
           {infoHouseForBody.map((info) => (

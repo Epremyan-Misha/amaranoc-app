@@ -44,7 +44,6 @@ function Houses({ layout, searchValue }: HousesProps) {
 
   const poolTypes = ["Բաց", "Փակ", "Տաքացվող", "Առանց լողավազան"];
 
-  // ✅ բերում ենք տները և ավելացնում ռանդոմ սենյակներ ու լողավազանի տեսակ
   useEffect(() => {
     setIsLoading(true);
     fetch(`${baseUrl}homeImages.json`)
@@ -58,11 +57,11 @@ function Houses({ layout, searchValue }: HousesProps) {
           rooms:
             h.rooms && Number(h.rooms) > 0
               ? Number(h.rooms)
-              : Math.floor(Math.random() * 5) + 1, // 1–5 ռանդոմ սենյակ
+              : Math.floor(Math.random() * 5) + 1,
           poolType:
             h.poolType && poolTypes.includes(h.poolType)
               ? h.poolType
-              : poolTypes[Math.floor(Math.random() * poolTypes.length)], // ռանդոմ լողավազան
+              : poolTypes[Math.floor(Math.random() * poolTypes.length)], 
         }));
 
         setHomeImages(normalizedHomes);
@@ -120,10 +119,8 @@ function Houses({ layout, searchValue }: HousesProps) {
       if (nightStay === "yes" && home.nightStay !== true) return false;
       if (nightStay === "no" && home.nightStay !== false) return false;
 
-      // ✅ սենյակների ֆիլտր
       if (roomsCount > 0 && home.rooms < roomsCount) return false;
 
-      // ✅ լողավազանի ֆիլտր
       if (poolType && poolType !== "Բոլորը" && home.poolType !== poolType)
         return false;
 
@@ -134,7 +131,7 @@ function Houses({ layout, searchValue }: HousesProps) {
   const columns = layout === "layout1" ? 2 : 3;
 
   return (
-    <div className="mt-[50px] px-[30px] w-full">
+    <div className="-mt-5 px-[30px] w-full">
       <div
         style={{
           display: "grid",

@@ -35,7 +35,7 @@ function HeaderInfo() {
       {infoForHeader.map((info, index) => (
         <h4
           key={info.id ?? index}
-          className="text-xl -mt-4 cursor-pointer hover:border-b-2 border-orange-500 pb-1"
+          className="text-xl  cursor-pointer hover:border-b-2 border-orange-500 pb-1"
         >
           {info.title}
         </h4>
@@ -43,7 +43,7 @@ function HeaderInfo() {
 
       <Link
         to="/login"
-        className="text-red-600 -mt-4 hover:border-b-2 border-red-500 pb-1"
+        className="text-red-600  hover:border-b-2 border-red-500 pb-1"
       >
         Դուրս գալ
       </Link>

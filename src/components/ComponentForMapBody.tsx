@@ -4,7 +4,7 @@ import "../index.css";
 function MapBody() {
   return (
     <>
-      <div className="flex ml-[15px] mt-[140px] m-40">
+      <div className="flex ml-[15px] mt-[140px] m-60">
         <div className="flex items-center ml-[380px] mt-[140px] border border-[rgb(128,126,126)] border-2 p-[10px] w-[120px] rounded-[15px]">
           Քարտեզ
         </div>
@@ -15,3 +15,4 @@ function MapBody() {
 }
 
 export default MapBody;
+6

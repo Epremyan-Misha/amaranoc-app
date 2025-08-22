@@ -13,7 +13,7 @@ function PeopleRooms() {
         {roomsOptions.map((num) => (
           <p
             key={num}
-            onClick={() => setRoomsCount(num === "6+" ? 7 : Number(num))} // 👈 6+ = 7 կամ ավել
+            onClick={() => setRoomsCount(num === "6+" ? 7 : Number(num))}
             className={`cursor-pointer m-[10px] text-center ml-[10px] w-[70px] h-[45px] p-[10px] rounded-[25px] border transition duration-200 ${
               roomsCount === (num === "6+" ? 7 : num)
                 ? "bg-black text-white"

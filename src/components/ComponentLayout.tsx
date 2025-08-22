@@ -1,7 +1,7 @@
 
 function LayoutComponent({ layout, setLayout }) {
   return (
-    <div className="mt-[20px] -ml-[100px] flex">
+    <div className="-mt-[70px] -ml-[100px] flex">
       <h1 className="text-2xl w-[300px] ml-[100px]">Լավագույն Առաջարկներ</h1>
       <div className="flex ml-[600px]">
         <div
