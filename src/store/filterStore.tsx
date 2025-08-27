@@ -8,17 +8,18 @@ interface FilterState {
   nightStay: string;
   roomsCount: number;       
   bathroomsCount: number;   
-  poolType: string;      
-
+  poolType: string;         
+  region: string;           
+  
   setMinPrice: (price: number | null) => void;
   setMaxPrice: (price: number | null) => void;
   setCurrency: (currency: string) => void;
   setPeopleCount: (count: number) => void;
   setNightStay: (value: string) => void;
   setRoomsCount: (count: number) => void;
-  setBathroomsCount: (count: number) => void; 
-  setPoolType: (type: string) => void;        
-
+  setBathroomsCount: (count: number) => void;
+  setPoolType: (value: string) => void;
+  setRegion: (region: string) => void; 
   resetFilters: () => void;
 }
 
@@ -30,7 +31,8 @@ export const useFilterStore = create<FilterState>((set) => ({
   nightStay: "",
   roomsCount: 0,
   bathroomsCount: 0,
-  poolType: "", 
+  poolType: "",
+  region: "",
 
   setMinPrice: (price) => set({ minPrice: price }),
   setMaxPrice: (price) => set({ maxPrice: price }),
@@ -38,8 +40,9 @@ export const useFilterStore = create<FilterState>((set) => ({
   setPeopleCount: (count) => set({ peopleCount: count }),
   setNightStay: (value) => set({ nightStay: value }),
   setRoomsCount: (count) => set({ roomsCount: count }),
-  setBathroomsCount: (count) => set({ bathroomsCount: count }), 
-  setPoolType: (type) => set({ poolType: type }),
+  setBathroomsCount: (count) => set({ bathroomsCount: count }),
+  setPoolType: (value) => set({ poolType: value }),
+  setRegion: (region) => set({ region }),
 
   resetFilters: () =>
     set({
@@ -51,5 +54,6 @@ export const useFilterStore = create<FilterState>((set) => ({
       roomsCount: 0,
       bathroomsCount: 0,
       poolType: "",
+      region: "",
     }),
 }));
