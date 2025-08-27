@@ -32,44 +32,44 @@ function Options(): JSX.Element {
   }, []);
 
   return (
-   <div className="flex ml-[350px] w-[1050px] h-[120px] mt-[50px] border-b border-b-[1px] border-b-[rgb(196,193,193)] border-t border-t-[1px] border-t-[rgb(196,192,192)]">
+   <div className="flex ml-[350px] w-[1050px] h-[120px]  border-b border-b-[1px] border-b-[rgb(236,235,235)] border-t border-t-[1px] border-t-[rgb(227,227,227)]">
   <div className="cursor-pointer ml-[15px] mt-[15px] group">
     <img className="ml-[25px]" src="/imagesForOptions/nkar1.png" alt="Առանձնատներ" />
-    <p className="border-b-[3px] border-orange-500 w-fit mx-auto">
+    <p className="border-b-[3px] border-orange-500 w-fit  mt-4 mx-auto">
       Առանձնատներ
     </p>
   </div>
   <div className="cursor-pointer ml-[45px] mt-[20px] group">
     <img className="ml-[25px]" src="/imagesForOptions/nkar2.png" alt="Frame Houses" />
-    <p className="border-b-[3px] border-transparent group-hover:border-orange-500 w-fit mx-auto">
+    <p className="border-b-[3px] border-transparent group-hover:border-orange-500 w-fit mx-auto mt-4">
       Frame Houses
     </p>
   </div>
 
   <div className="cursor-pointer ml-[45px] mt-[20px] group">
     <img className="ml-[25px]" src="/imagesForOptions/nkar3.png" alt="Տնակներ" />
-    <p className="border-b-[3px] border-transparent group-hover:border-orange-500 w-fit mx-auto">
+    <p className="border-b-[3px] border-transparent group-hover:border-orange-500 w-fit  mt-4 mx-auto">
       Տնակներ
     </p>
   </div>
 
   <div className="cursor-pointer ml-[55px] mt-[20px] group">
     <img className="ml-[25px]" src="/imagesForOptions/nkar4.png" alt="Փակ լողավազան" />
-    <p className="border-b-[3px] border-transparent group-hover:border-orange-500 w-fit mx-auto">
+    <p className="border-b-[3px] border-transparent group-hover:border-orange-500 w-fit  mt-4 mx-auto">
       Փակ լողավազան
     </p>
   </div>
 
   <div className="cursor-pointer ml-[55px] mt-[12px] group">
     <img className="ml-[25px]" src="/imagesForOptions/nkar5.png" alt="Աղմուկից հեռու" />
-    <p className="border-b-[3px] border-transparent group-hover:border-orange-500 w-fit mx-auto">
+    <p className="border-b-[3px] border-transparent group-hover:border-orange-500 w-fit  mt-4 mx-auto">
       Աղմուկից հեռու
     </p>
   </div>
 
   <div className="cursor-pointer ml-[55px] mt-[12px] group">
     <img className="ml-[25px]" src="/imagesForOptions/nkar6.png" alt="Շքեղ տեսարան" />
-    <p className="border-b-[3px] border-transparent group-hover:border-orange-500 w-fit mx-auto">
+    <p className="border-b-[3px] border-transparent group-hover:border-orange-500 w-fit  mt-4 mx-auto">
       Շքեղ տեսարան
     </p>
   </div>

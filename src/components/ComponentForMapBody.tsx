@@ -15,4 +15,3 @@ function MapBody() {
 }
 
 export default MapBody;
-6

@@ -31,35 +31,37 @@ function HeaderInfo() {
   }, []);
 
   return (
-    <div className="flex items-center gap-6 relative z-50">
-      {infoForHeader.map((info, index) => (
-        <h4
-          key={info.id ?? index}
-          className="text-xl  cursor-pointer hover:border-b-2 border-orange-500 pb-1"
-        >
-          {info.title}
-        </h4>
-      ))}
+    <div className="flex items-center justify-end gap-8 relative z-50 h-[60px]">
+      <div className="flex items-center gap-16">
+        {infoForHeader.map((info, index) => (
+          <h4
+            key={info.id ?? index}
+            className="text-lg cursor-pointer hover:border-b-2 border-orange-500 pb-1 transition"
+          >
+            {info.title}
+          </h4>
+        ))}
 
-      <Link
-        to="/login"
-        className="text-red-600  hover:border-b-2 border-red-500 pb-1"
-      >
-        Դուրս գալ
-      </Link>
+        <Link
+          to="/login"
+          className="text-red-600 hover:border-b-2 border-red-500 pb-1 transition"
+        >
+          Դուրս գալ
+        </Link>
+      </div>
 
       <div
-        className="relative cursor-pointer -mt-4"
+        className="relative cursor-pointer flex items-center"
         onClick={() => setModalOpen(!isModalOpen)}
       >
         <img
-          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZD0iTTExLjk5IDIwLjI4bC0xLjQtMS4yYy00LjY3LTMuOTEtNy43LTYuNTItNy43LTkuMWE0LjkyIDQuOTIgMCAwIDEgMy4xLTQuNDQgNS4xOSA1LjE5IDAgMCAxIDMuOTQgMS4yIDUuMTkgNS4xOSAwIDAgMSAzLjk0LTEuMiA0LjkyIDQuOTIgMCAwIDEgMy4xIDQuNDQgMTIgMTIgMCAwIDEtNy43IDkuMSIgc3Ryb2tlPSJyZWQiIGZpbGw9Im5vbmUiLz48L3N2Zz4="
+          src="/images/heart1.png"
           alt="Favorites Icon"
-          className="w-8 h-8"
+          className="w-7 h-7"
         />
 
         {isModalOpen && (
-          <div className="absolute right-0 mt-4 w-[400px] max-h-[500px] overflow-y-auto bg-white rounded-lg shadow-xl p-6 z-50 border border-gray-300">
+          <div className="absolute right-0 top-10 w-[400px] max-h-[500px] overflow-y-auto bg-white rounded-lg shadow-xl p-6 z-50 border border-gray-300">
             <h3 className="text-lg font-semibold mb-4">Ընտրյալներ</h3>
 
             {favorites.length > 0 ? (

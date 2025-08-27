@@ -1,16 +1,20 @@
-
 function LayoutComponent({ layout, setLayout }) {
   return (
-    <div className="-mt-[70px] -ml-[100px] flex">
-      <h1 className="text-2xl w-[300px] ml-[100px]">Լավագույն Առաջարկներ</h1>
-      <div className="flex ml-[600px]">
+    <div className="-mt-[200px] flex items-center justify-between border-b border-gray-200 pb-3">
+      <h1 className=" w-[300px] ml-[30px] text-2xl text-zinc-700">Լավագույն Առաջարկներ</h1>
+
+      <div className="flex mr-[100px]">
         <div
           className="cursor-pointer"
           onClick={() => setLayout("layout1")}
         >
           <img
             className="w-10 h-10"
-            src={layout === "layout1" ? "images/layout1black.png" : "images/layout1.png"}
+            src={
+              layout === "layout1"
+                ? "images/layout1black.png"
+                : "images/layout1.png"
+            }
             alt="Layout 1"
           />
         </div>
@@ -21,7 +25,11 @@ function LayoutComponent({ layout, setLayout }) {
         >
           <img
             className="w-10 h-10"
-            src={layout === "layout2" ? "images/layout2.png" : "images/layout2white.png"}
+            src={
+              layout === "layout2"
+                ? "images/layout2.png"
+                : "images/layout2white.png"
+            }
             alt="Layout 2"
           />
         </div>

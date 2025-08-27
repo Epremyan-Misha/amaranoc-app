@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom'; 
-import '../index.css';
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import "../index.css";
 import HeaderInfo from "../components/ComponentForHeaderInfo";
-import { Logo, SearchInput } from '../components/ComponentForHead';
+import { Logo, SearchInput } from "../components/ComponentForHead";
 
 interface HeadProps {
   searchValue: string;
@@ -26,31 +26,34 @@ function Head({ searchValue, onSearchChange }: HeadProps): JSX.Element {
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   return (
-    <div
-      className={`bg-white fixed top-0 left-0 z-50 w-full transition-transform duration-300 flex gap-20 shadow-md px-6 py-4 h-30 ${
-        showHeader ? 'translate-y-0' : '-translate-y-full'
+    <header
+      className={`bg-white fixed top-0 left-0 z-50 w-full transition-transform duration-300 shadow-md px-8 py-4 h-20 flex items-center justify-between ${
+        showHeader ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <Logo />
-      <NavLink 
-        to="/" 
-        className={({ isActive }) =>
-          isActive 
-          ? "text-1xl mt-8 border-b-2 border-b-orange-500 h-7.5 cursor-pointer"
-          : "text-1xl mt-8 h-7.5 cursor-pointer"
-        }
-      >
-        Գլխավոր
-      </NavLink>
-      <HeaderInfo />
+      <nav className="flex items-center gap-10">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "text-lg font-medium border-b-2 border-orange-500 pb-1"
+              : "text-lg font-medium hover:text-orange-500 transition-colors"
+          }
+        >
+          Գլխավոր
+        </NavLink>
+
+        <HeaderInfo />
+      </nav>
       <SearchInput value={searchValue} onChange={onSearchChange} />
-    </div>
+    </header>
   );
 }
 

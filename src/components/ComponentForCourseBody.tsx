@@ -25,7 +25,7 @@ function Course() {
 
   return (
     <div className="flex ml-[5px] p-[10px]">
-      <h4>Արժեք</h4>
+      <h4 className="mt-3">Արժեք</h4>
       {courses.map((info) => (
         <p
           key={info.id}

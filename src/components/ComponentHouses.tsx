@@ -22,7 +22,6 @@ function Houses({ layout, searchValue }: HousesProps) {
     setIsFiltering,
   } = useHousesStore();
 
-  const favorites = useFavoritesStore((s) => s.favorites);
   const addFavorite = useFavoritesStore((s) => s.addFavorite);
   const removeFavorite = useFavoritesStore((s) => s.removeFavorite);
   const isFavorite = useFavoritesStore((s) => s.isFavorite);
@@ -65,7 +64,6 @@ function Houses({ layout, searchValue }: HousesProps) {
           };
         });
 
-        console.log("🏠 Loaded homes:", normalizedHomes); // Debugging
         setHomeImages(normalizedHomes);
         setIsLoading(false);
       })
@@ -103,7 +101,6 @@ function Houses({ layout, searchValue }: HousesProps) {
     return { price, curr };
   };
 
-  // ✅ Helper — նկարի անունից ստանում ենք տարածաշրջան
   const getRegionFromImage = (image: string) => {
     if (!image) return "";
     const lower = image.toLowerCase();
@@ -120,11 +117,9 @@ function Houses({ layout, searchValue }: HousesProps) {
   };
 
   let visibleHomes = homeImages
-    // ✅ որոնում ըստ searchValue
     .filter((home) =>
       home.title?.toLowerCase().includes(searchValue.toLowerCase())
     )
-    // ✅ ֆիլտրացիա ըստ մնացած filter-ների
     .filter((home) => {
       const { price, curr } = parsePrice(home.prace);
 
@@ -146,7 +141,6 @@ function Houses({ layout, searchValue }: HousesProps) {
       if (poolType && poolType !== "Բոլորը" && home.poolType !== poolType)
         return false;
 
-      // ✅ Տարածաշրջանով ֆիլտր
       if (region && region !== "" && region !== "Բոլորը") {
         const houseRegion = getRegionFromImage(home.image);
         if (houseRegion !== region) return false;
@@ -198,9 +192,9 @@ function Houses({ layout, searchValue }: HousesProps) {
                     }
                   }}
                 >
-                  <div className="overflow-hidden rounded-[25px]">
+                  <div className="overflow-hidden rounded-[25px] w-full">
                     <img
-                      className="w-full h-auto rounded-[5px]"
+                      className="w-full h-64 object-cover rounded-[5px]"
                       src={`/housesImages/${img.image.replace(
                         "housesPhoto/",
                         ""
@@ -210,26 +204,42 @@ function Houses({ layout, searchValue }: HousesProps) {
                         (e.currentTarget.src = "/images/default.png")
                       }
                     />
-                    <button
-                      className="mt-2"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        isFavorite(id)
-                          ? removeFavorite(id)
-                          : addFavorite(img);
-                        setModalOpen(!isFavorite(id));
-                      }}
-                    >
-                      <span style={{ fontSize: "24px" }}>
-                        {favorite ? "❤️" : "🤍"}
-                      </span>
-                    </button>
-                    <div className="mt-2 ml-3">
-                      <h2 className="font-bold text-lg">{img.title}</h2>
-                      <p>{img.people} people</p>
-                      <p>{img.rooms} սենյակ</p>
-                      <p>{img.poolType}</p>
-                      <p className="ml-40 text-2xl">{img.prace}</p>
+
+                    <div className="mt-2 ml-3 flex items-center justify-between">
+                      <div>
+                        <h2 className="font-bold text-lg">{img.title}</h2>
+                        <p>{img.people} people</p>
+                        <p>{img.rooms} սենյակ</p>
+                        <p className="mt-3 text-2xl">{img.prace}</p>
+                      </div>
+
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (favorite) {
+                            removeFavorite(id);
+                          } else {
+                            addFavorite({
+                              id,
+                              title: img.title,
+                              image: img.image,
+                            });
+                          }
+                          setModalOpen(!favorite);
+                        }}
+                        className="ml-3"
+                      >
+                        <img
+                          key={favorite ? "red" : "gray"}
+                          src={
+                            favorite
+                              ? "/images/heart.png"
+                              : "/images/heart1.png"
+                          }
+                          alt="favorite"
+                          className="w-7 h-7"
+                        />
+                      </button>
                     </div>
                   </div>
                 </div>

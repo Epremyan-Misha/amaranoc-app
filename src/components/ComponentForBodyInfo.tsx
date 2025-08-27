@@ -44,30 +44,52 @@ function BodyInfo() {
 
   return (
     <div>
-      <h3 className="ml-6 -mt-3 font-semibold">Տարածաշրջան</h3>
+      <h3 className="ml-6 -mt-30 font-semibold">Տարածաշրջան</h3>
       <div className="border-b border-b-[rgb(233,231,231)]">
-        <div className="cursor-pointer ml-[25px] text-[rgb(75,74,74)] max-h-[200px] overflow-y-auto pr-2">
-          {/* ✅ "Բոլորը" */}
-          <p
+        <div className="cursor-pointer ml-[25px] text-[rgb(75,74,74)] max-h-[200px] mt-5 overflow-y-auto pr-2">
+          <div
             onClick={() => setRegion("")}
-            className={`py-1 hover:text-black ${
-              region === "" ? "font-bold text-black" : ""
-            }`}
+            className="flex items-center space-x-2 py-1 hover:text-black cursor-pointer"
           >
-            Բոլորը
-          </p>
+            <span
+              className={`w-4 h-4 border rounded-sm flex items-center justify-center ${
+                region === "" ? "bg-yellow-400 border-yellow-500" : "border-gray-400"
+              }`}
+            >
+              {region === "" && <span className="text-white text-xs">✓</span>}
+            </span>
+            <span className={region === "" ? "font-bold text-black" : ""}>
+              Բոլորը
+            </span>
+          </div>
 
           {infoHouseForBody.map((info) =>
             info.name ? (
-              <p
+              <div
                 key={info.id}
                 onClick={() => setRegion(info.name)}
-                className={`py-1 hover:text-black ${
-                  region === info.name ? "font-bold text-black" : ""
-                }`}
+                className="flex items-center space-x-2 py-1 hover:text-black cursor-pointer"
               >
-                {info.name}
-              </p>
+                <span
+                  className={`w-4 h-4 border rounded-sm flex items-center justify-center ${
+                    region === info.name
+                      ? "bg-yellow-400 border-yellow-500"
+                      : "border-gray-400"
+                  }`}
+                >
+                  {region === info.name && (
+                    <span className="text-white text-xs">✓</span>
+                  )}
+                </span>
+
+                <span
+                  className={
+                    region === info.name ? "font-bold text-black" : ""
+                  }
+                >
+                  {info.name}
+                </span>
+              </div>
             ) : null
           )}
         </div>
