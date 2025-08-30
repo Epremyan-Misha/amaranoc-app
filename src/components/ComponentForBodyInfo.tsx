@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../index.css";
 import { useFilterStore } from "../store/filterStore";
 
 const baseUrl = "https://myproject-73982-default-rtdb.firebaseio.com/";
@@ -15,38 +14,29 @@ function BodyInfo() {
 
   useEffect(() => {
     fetch(`${baseUrl}infoHouseForBody.json`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Network response not ok");
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
-        if (!data) {
-          setInfoHouseForBody([]);
-          return;
-        }
-
+        if (!data) return setInfoHouseForBody([]);
         const list: Region[] = Array.isArray(data)
           ? data.map((item, index) => ({
               ...item,
               id: item?.id?.toString() || `region-${index}`,
               name: item?.name || "",
             }))
-          : Object.entries(data).map(([firebaseKey, value]) => ({
-              ...(value as any),
-              id: firebaseKey,
+          : Object.entries(data).map(([key, value]) => ({
+              id: key,
               name: (value as any)?.name || "",
             }));
-
         setInfoHouseForBody(list);
       })
-      .catch((err) => console.error("Error fetching infoHouseForBody:", err));
+      .catch(console.error);
   }, []);
 
   return (
     <div>
-      <h3 className="ml-6 -mt-30 font-semibold">Տարածաշրջան</h3>
-      <div className="border-b border-b-[rgb(233,231,231)]">
-        <div className="cursor-pointer ml-[25px] text-[rgb(75,74,74)] max-h-[200px] mt-5 overflow-y-auto pr-2">
+      <h3 className="ml-6 font-semibold mt-2">Տարածաշրջան</h3>
+      <div className="border-b border-gray-200">
+        <div className="cursor-pointer ml-6 mt-2 max-h-52 overflow-y-auto pr-2">
           <div
             onClick={() => setRegion("")}
             className="flex items-center space-x-2 py-1 hover:text-black cursor-pointer"
@@ -81,12 +71,7 @@ function BodyInfo() {
                     <span className="text-white text-xs">✓</span>
                   )}
                 </span>
-
-                <span
-                  className={
-                    region === info.name ? "font-bold text-black" : ""
-                  }
-                >
+                <span className={region === info.name ? "font-bold text-black" : ""}>
                   {info.name}
                 </span>
               </div>

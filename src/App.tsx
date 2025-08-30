@@ -1,5 +1,4 @@
-// App.tsx
-
+import HouseDetail from "./components/HouseDetail"; 
 import React, { useState } from "react";
 import Head from "./layout/Header";
 import Body from "./layout/Body";
@@ -35,6 +34,15 @@ const App: React.FC = () => {
               </ProtectedRoute>
             }
           />
+  <Route
+    path="/house/:id"
+    element={
+      <ProtectedRoute>
+        <HouseDetail />
+        <Footer />
+      </ProtectedRoute>
+    }
+  />
         </Routes>
       </Router>
     </AuthProvider>
@@ -42,3 +50,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
