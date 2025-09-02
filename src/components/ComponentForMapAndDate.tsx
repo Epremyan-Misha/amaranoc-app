@@ -10,7 +10,6 @@ function MapAndDate() {
   const [showDate, setShowDate] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-  // 👉 փակվի popover-ը եթե սեղմում ենք դուրսը
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -27,10 +26,10 @@ function MapAndDate() {
   }, []);
 
   return (
-    <div className="flex gap-6 mt-20 ml-10">
+    <div className="flex gap-6 mt-35 ml-10">
       <div className="relative">
         <FaMapMarkerAlt
-          className="map-icon text-red-600 text-3xl cursor-pointer hover:scale-110 transition"
+          className="map-icon text-black text-3xl cursor-pointer hover:scale-110 transition"
           onClick={() => setShowMap(!showMap)}
         />
         {showMap && (
@@ -55,17 +54,18 @@ function MapAndDate() {
 
       <div className="relative">
         <FaCalendarAlt
-          className="date-icon text-yellow-500 text-3xl cursor-pointer hover:scale-110 transition"
+          className="date-icon text-black text-3xl cursor-pointer hover:scale-110 transition"
           onClick={() => setShowDate(!showDate)}
         />
         {showDate && (
-          <div className="date-popover absolute top-10 left-0 bg-white p-4 shadow-lg border rounded-xl z-50">
+          <div className="date-popover absolute top-10 left-0">
             <DatePicker
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
               dateFormat="dd/MM/yyyy"
-              className="border rounded-lg px-3 py-2 w-48 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-              placeholderText="Ընտրեք ամսաթիվ"
+             
+              open 
+              onClickOutside={() => setShowDate(false)}
             />
           </div>
         )}

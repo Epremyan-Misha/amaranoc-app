@@ -1,4 +1,3 @@
-// src/data.js
 export const housesData = [
   {
     id: 1,
@@ -9,8 +8,8 @@ export const housesData = [
     title: "Ծաղկաձոր",
     sliderImages: [
       "housesImages/caxkadzorS2.png",
-      "housesImages/caxkadzorS3.png"
-    ]
+      "housesImages/caxkadzorS3.png",
+    ],
   },
   {
     id: 2,
@@ -20,9 +19,9 @@ export const housesData = [
     prace: "90,000Դ",
     title: "Օհանավան",
     sliderImages: [
-      "housesImages/ohanavanS1.png",
-      "housesImages/ohanavanS2.png"
-    ]
+      "housesImages/ohanavanS4.png",
+      "housesImages/ohanavanS7.png",
+    ],
   },
   {
     id: 3,
@@ -31,10 +30,7 @@ export const housesData = [
     people: "12",
     prace: "70,000Դ",
     title: "Երևան",
-    sliderImages: [
-      "housesImages/erevanS1.png",
-      "housesImages/erevanS2.png"
-    ]
+    sliderImages: ["housesImages/erevanS1.png", "housesImages/erevanS2.png"],
   },
   {
     id: 4,
@@ -43,70 +39,61 @@ export const housesData = [
     people: "20",
     prace: "85,000Դ",
     title: "Դիլիջան",
-    sliderImages: [
-      "housesImages/dilijanS1.png",
-      "housesImages/dilijanS2.png"
-    ]
+    sliderImages: ["housesImages/dilijanS1.png", "housesImages/dilijanS2.png"],
   },
   {
     id: 5,
-    image: "housesImages/tsaghkadzor2.png",
+    image: "housesImages/caxkadzor1.png",
     night: true,
     people: "18",
     prace: "95,000Դ",
-    title: "Ծաղկաձոր 2",
+    title: "Ծաղկաձոր",
     sliderImages: [
-      "housesImages/tsaghkadzor2S1.png",
-      "housesImages/tsaghkadzor2S2.png"
-    ]
+      "housesImages/caxkadzorS4.png",
+      "housesImages/caxkadzorS5.png",
+    ],
   },
   {
     id: 6,
-    image: "housesImages/gyumri.png",
+    image: "housesImages/draxtik.png",
     night: false,
     people: "30",
     prace: "100,000Դ",
-    title: "Գյումրի",
-    sliderImages: [
-      "housesImages/gyumriS1.png",
-      "housesImages/gyumriS2.png"
-    ]
+    title: "Դրախտիկ",
+    sliderImages: ["housesImages/draxtikS1.png", "housesImages/draxtikS2.png"],
   },
   {
     id: 7,
-    image: "housesImages/jermuk.png",
+    image: "housesImages/garni.png",
     night: true,
     people: "22",
     prace: "110,000Դ",
-    title: "Ջերմուկ",
-    sliderImages: [
-      "housesImages/jermukS1.png",
-      "housesImages/jermukS2.png"
-    ]
+    title: "Գառնի",
+    sliderImages: ["housesImages/garniS1.png", "housesImages/garniS2.png"],
   },
   {
     id: 8,
-    image: "housesImages/avan.png",
+    image: "housesImages/ohanavan.png",
     night: false,
     people: "16",
     prace: "75,000Դ",
-    title: "Ավան",
+    title: "Օհանավան",
     sliderImages: [
-      "housesImages/avanS1.png",
-      "housesImages/avanS2.png"
-    ]
+      "housesImages/ohanavanS3.png",
+      "housesImages/ohanavanS4.png",
+    ],
   },
   {
     id: 9,
-    image: "housesImages/kapan.png",
+    image: "housesImages/mrgashen.png",
     night: true,
     people: "14",
     prace: "70,000Դ",
-    title: "Կապան",
+    title: "Մրգաշեն",
     sliderImages: [
-      "housesImages/kapanS1.png",
-      "housesImages/kapanS2.png"
-    ]
+      "housesImages/mrgashenS1.png",
+      "housesImages/mrgashenS2.png",
+    ],
   },
   {
     id: 10,
@@ -115,57 +102,51 @@ export const housesData = [
     people: "28",
     prace: "95,000Դ",
     title: "Հրազդան",
-    sliderImages: [
-      "housesImages/hrazdanS1.png",
-      "housesImages/hrazdanS2.png"
-    ]
+    sliderImages: ["housesImages/hrazdanS1.png", "housesImages/hrazdanS2.png"],
   },
   {
     id: 11,
-    image: "housesImages/vayk.png",
+    image: "housesImages/ohanavan1.png",
     night: true,
     people: "18",
     prace: "85,000Դ",
-    title: "Վայք",
+    title: "Օհանավան",
     sliderImages: [
-      "housesImages/vaykS1.png",
-      "housesImages/vaykS2.png"
-    ]
+      "housesImages/ohanavanS5.png",
+      "housesImages/ohanavanS6.png",
+    ],
   },
   {
     id: 12,
-    image: "housesImages/artashat.png",
+    image: "housesImages/caxkadzor.png",
     night: false,
     people: "24",
     prace: "90,000Դ",
-    title: "Արտաշատ",
+    title: "Ծաղկաձոր",
     sliderImages: [
-      "housesImages/artashatS1.png",
-      "housesImages/artashatS2.png"
-    ]
+      "housesImages/caxkadzorS6.png",
+      "housesImages/caxkadzorS7.png",
+    ],
   },
   {
     id: 13,
-    image: "housesImages/abovyan.png",
+    image: "housesImages/ohanavan2.png",
     night: true,
     people: "20",
     prace: "100,000Դ",
-    title: "Աբովյան",
+    title: "Օհանավան",
     sliderImages: [
-      "housesImages/abovyanS1.png",
-      "housesImages/abovyanS2.png"
-    ]
+      "housesImages/ohanavanS7.png",
+      "housesImages/ohanavanS2.png",
+    ],
   },
   {
     id: 14,
-    image: "housesImages/masis.png",
+    image: "housesImages/erevan.png",
     night: false,
     people: "26",
     prace: "105,000Դ",
-    title: "Մասիս",
-    sliderImages: [
-      "housesImages/masisS1.png",
-      "housesImages/masisS2.png"
-    ]
-  }
+    title: "Երևան",
+    sliderImages: ["housesImages/erevanS3.png", "housesImages/erevanS2.png"],
+  },
 ];

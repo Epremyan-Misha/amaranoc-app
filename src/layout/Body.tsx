@@ -31,7 +31,7 @@ function Body({ searchValue }: { searchValue: string }) {
       style={{ minHeight: "calc(100vh - 150px)" }}
     >
       <div className="flex flex-row gap-6 mt-6 px-6 max-w-[1440px] mx-auto">
-        <div className="w-[320px] border border-gray-300 rounded-2xl p-4 h-[1410px] bg-white shadow-md mt-[120px] m-5">
+        <div className="w-[360px] border border-gray-300 rounded-2xl p-4 h-[1410px] -ml-20 bg-white shadow-md mt-[120px] m-5">
           <Options />
           <BodyInfo />
           <CourseInputsAndPrace />
@@ -47,7 +47,7 @@ function Body({ searchValue }: { searchValue: string }) {
           <AdvantagesMain />
         </div>
           <MapAndDate />
-        <div className="flex-1 flex flex-col gap-16 -ml-[150px] mt-[500px]">
+        <div className="flex-1 flex flex-col gap-16 -ml-[150px] mt-[550px]">
           <AppLayoutManager searchValue={searchValue} />
           <PagesImg />
         </div>

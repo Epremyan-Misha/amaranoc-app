@@ -8,14 +8,14 @@ function BathRoom() {
 
   return (
     <div className="border-b border-b-[1px] border-b-[rgb(233,231,231)] h-[210px]">
-      <h4 className="ml-[30px] text-[rgb(46,46,46)]">Սանհանգույցների քանակ</h4>
+      <h4 className="ml-[30px] text-[20px]  text-black">Սանհանգույցների քանակ</h4>
 
       <div className="flex flex-wrap mt-[20px]">
         {bathroomOptions.map((num) => (
           <p
             key={num}
             onClick={() => setBathroomsCount(num === "3+" ? 3 : Number(num))}
-            className={`cursor-pointer m-[10px] text-center ml-[10px] w-[70px] h-[45px] p-[10px] rounded-[25px] border transition duration-200 ${
+            className={`cursor-pointer m-[10px] text-center ml-[10px] w-[90px] h-[60px] p-[15px] rounded-[25px] border transition duration-200 ${
               bathroomsCount === (num === "3+" ? 3 : num)
                 ? "bg-black text-white"
                 : "border-[rgb(179,177,177)] text-[rgb(93,53,53)] bg-white hover:bg-[gainsboro]"

@@ -1,7 +1,7 @@
 function LayoutComponent({ layout, setLayout }) {
   return (
-    <div className="-mt-[200px] flex items-center justify-between border-b border-gray-200 pb-3">
-      <h1 className=" w-[300px] ml-[30px] text-2xl text-zinc-700">Լավագույն Առաջարկներ</h1>
+    <div className="-mt-[200px] flex items-center justify-between border-b border-gray-100 pb-3">
+      <h1 className=" w-[300px] ml-[30px] text-2xl text-black-700">Լավագույն Առաջարկներ</h1>
 
       <div className="flex mr-[100px]">
         <div

@@ -6,9 +6,9 @@ const CourseInputs: React.FC = () => {
   const { minPrice, maxPrice, setMinPrice, setMaxPrice } = useFilterStore();
 
   return (
-    <div className="flex mt-[30px]">
+    <div className="flex mt-[30px] gap-3">
       <input
-        className="border border-[rgb(206,205,205)] border-[0.5px] w-[130px] ml-[7px] h-[25px] p-[5px] rounded-[15px]"
+        className="border border-gray-300 w-[160px] h-[40px] px-4 rounded-md text-[15px] focus:outline-none focus:ring-2 focus:ring-black"
         type="number"
         placeholder="Սկսած"
         value={minPrice ?? ""}
@@ -18,7 +18,7 @@ const CourseInputs: React.FC = () => {
         }}
       />
       <input
-        className="border border-[rgb(206,205,205)] border-[0.5px] w-[130px] ml-[7px] h-[25px] p-[5px] rounded-[15px]"
+        className="border border-gray-300 w-[160px] h-[40px] px-4 rounded-md text-[15px] focus:outline-none focus:ring-2 focus:ring-black"
         type="number"
         placeholder="Մինչև"
         value={maxPrice ?? ""}

@@ -20,18 +20,19 @@ function Houses({ layout, searchValue, initialData }: HousesProps) {
   const isFavorite = useFavoritesStore((s) => s.isFavorite);
   const setModalOpen = useFavoritesStore((s) => s.setModalOpen);
 
-  const { region } = useFilterStore(); // region state
-
+  const { region } = useFilterStore();
   const navigate = useNavigate();
 
-  // Ֆիլտր տների համար ըստ searchValue և ընտրված region
   const filteredHomes = homeImages.filter((home) => {
     const matchesSearch = home.title.toLowerCase().includes(searchValue.toLowerCase());
     const matchesRegion = region ? home.region === region : true;
     return matchesSearch && matchesRegion;
   });
 
-  const columns = layout === "layout1" ? 2 : 3;
+  // Layout logic
+  const columns = layout === "layout1" ? 3 : 2; // layout1 → 3 կողքի, layout2 → 2 կողքի
+  const maxCardWidth = layout === "layout1" ? 360 : 460; // փոքր/մեծ card
+  const gap = layout === "layout1" ? 20 : 25;
 
   const getImagePath = (filename: string) => `/${filename}`;
 
@@ -40,8 +41,8 @@ function Houses({ layout, searchValue, initialData }: HousesProps) {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: `repeat(${columns}, minmax(320px, 1fr))`,
-          gap: "35px",
+          gridTemplateColumns: `repeat(${columns}, 1fr)`,
+          gap: `${gap}px`,
           justifyItems: "center",
           width: "100%",
         }}
@@ -53,10 +54,10 @@ function Houses({ layout, searchValue, initialData }: HousesProps) {
           return (
             <div
               key={id}
-              className={`ml-5 shadow-md p-[10px] cursor-pointer transform transition hover:scale-[1.02] ${
+              className={`shadow-md p-[10px] cursor-pointer transform transition hover:scale-[1.02] ${
                 favorite ? "bg-gray-100" : "bg-white"
               }`}
-              style={{ width: "100%", maxWidth: "380px" }}
+              style={{ width: "100%", maxWidth: `${maxCardWidth}px` }}
               onClick={() => navigate(`/house/${id}`)}
             >
               <Swiper
@@ -64,12 +65,12 @@ function Houses({ layout, searchValue, initialData }: HousesProps) {
                 pagination={{ clickable: true }}
                 autoplay={{ delay: 2500, disableOnInteraction: false }}
                 loop={true}
-                className="w-full h-[230px] rounded-[10px]"
+                className="w-full h-[250px] rounded-[15px]"
               >
                 {house.image && (
                   <SwiperSlide>
                     <img
-                      className="w-full h-[230px] object-cover rounded-[10px]"
+                      className="w-full h-[250px] object-cover rounded-[15px]"
                       src={getImagePath(house.image)}
                       alt={house.title}
                     />
@@ -78,7 +79,7 @@ function Houses({ layout, searchValue, initialData }: HousesProps) {
                 {house.sliderImages?.map((img, i) => (
                   <SwiperSlide key={i}>
                     <img
-                      className="w-full h-[230px] object-cover rounded-[10px]"
+                      className="w-full h-[250px] object-cover rounded-[15px]"
                       src={getImagePath(img)}
                       alt={`${house.title} ${i + 1}`}
                     />

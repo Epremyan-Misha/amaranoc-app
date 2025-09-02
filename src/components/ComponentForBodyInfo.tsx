@@ -34,7 +34,7 @@ function BodyInfo() {
 
   return (
     <div>
-      <h3 className="ml-6 font-semibold mt-2">Տարածաշրջան</h3>
+      <h1 className="ml-6 m-5 text-[25px]  text-black -mt-34">Տարածաշրջան</h1>
       <div className="border-b border-gray-200">
         <div className="cursor-pointer ml-6 mt-2 max-h-52 overflow-y-auto pr-2">
           <div
@@ -42,13 +42,13 @@ function BodyInfo() {
             className="flex items-center space-x-2 py-1 hover:text-black cursor-pointer"
           >
             <span
-              className={`w-4 h-4 border rounded-sm flex items-center justify-center ${
-                region === "" ? "bg-yellow-400 border-yellow-500" : "border-gray-400"
+              className={`w-6 h-6 border rounded-sm flex items-center justify-center ${
+                region === "" ? "bg-orange-400 border-orange-500" : "border-gray-400"
               }`}
             >
               {region === "" && <span className="text-white text-xs">✓</span>}
             </span>
-            <span className={region === "" ? "font-bold text-black" : ""}>
+            <span className={region === "" ? "font-bold text-black text-[17px]" : ""}>
               Բոլորը
             </span>
           </div>
@@ -58,12 +58,12 @@ function BodyInfo() {
               <div
                 key={info.id}
                 onClick={() => setRegion(info.name)}
-                className="flex items-center space-x-2 py-1 hover:text-black cursor-pointer"
+                className="text-gray-600 text-[17px] flex items-center space-x-2 py-1 hover:text-black cursor-pointer"
               >
                 <span
-                  className={`w-4 h-4 border rounded-sm flex items-center justify-center ${
+                  className={`w-6 h-6 border rounded-sm flex items-center justify-center ${
                     region === info.name
-                      ? "bg-yellow-400 border-yellow-500"
+                      ? "bg-orange-400 border-orange-500"
                       : "border-gray-400"
                   }`}
                 >

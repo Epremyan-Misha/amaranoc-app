@@ -24,20 +24,21 @@ function Course() {
   }, []);
 
   return (
-    <div className="flex ml-[5px] p-[10px]">
-      <h4 className="mt-3">Արժեք</h4>
-      {courses.map((info) => (
-        <p
-          key={info.id}
-          onClick={() => setCurrency(info.title)}
-          className={`cursor-pointer w-[50px] m-[10px] h-[30px] border border-black rounded-[45px] text-center ml-[10px] transition duration-500 hover:bg-[gainsboro] ${
-            currency === info.title ? "bg-[gainsboro]" : ""
-          }`}
-        >
-          {info.title}
-        </p>
-      ))}
-    </div>
+    <div className="flex justify-center items-center gap-3 p-[10px]">
+  <h4 className="mt-3 mr-3">Արժեք</h4>
+  {courses.map((info) => (
+    <p
+      key={info.id}
+      onClick={() => setCurrency(info.title)}
+      className={`cursor-pointer mt-2 min-w-[40px] h-[40px] border border-gainsboro-400 rounded-full flex items-center justify-center text-[15px] font-medium transition duration-500 hover:bg-[gainsboro] ${
+        currency === info.title ? "bg-black text-white" : ""
+      }`}
+    >
+      {info.title}
+    </p>
+  ))}
+</div>
+
   );
 }
 

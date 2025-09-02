@@ -8,13 +8,13 @@ function PeopleRooms() {
 
   return (
     <div className="h-[270px] border-b border-b-[1px] border-b-[rgb(233,231,231)]">
-      <h4 className="ml-[30px] text-[rgb(46,46,46)]">Սենյակների քանակ</h4>
+      <h4 className="ml-[30px] mt-1 text-[20px]  text-black">Սենյակների քանակ</h4>
       <div className="flex flex-wrap mt-[15px]">
         {roomsOptions.map((num) => (
           <p
             key={num}
             onClick={() => setRoomsCount(num === "6+" ? 7 : Number(num))}
-            className={`cursor-pointer m-[10px] text-center ml-[10px] w-[70px] h-[45px] p-[10px] rounded-[25px] border transition duration-200 ${
+            className={`cursor-pointer m-[10px] text-center ml-[10px] w-[80px] h-[50px] p-[10px] rounded-[25px] border transition duration-200 ${
               roomsCount === (num === "6+" ? 7 : num)
                 ? "bg-black text-white"
                 : "border-[rgb(179,177,177)] text-[rgb(93,53,53)] bg-white hover:bg-[gainsboro]"
