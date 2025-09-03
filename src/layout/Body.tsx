@@ -31,7 +31,7 @@ function Body({ searchValue }: { searchValue: string }) {
       style={{ minHeight: "calc(100vh - 150px)" }}
     >
       <div className="flex flex-row gap-6 mt-6 px-6 max-w-[1440px] mx-auto">
-        <div className="w-[360px] border border-gray-300 rounded-2xl p-4 h-[1410px] -ml-20 bg-white shadow-md mt-[120px] m-5">
+        <div className="w-[360px] border border-gray-300 rounded-2xl p-4 h-[1570px] -ml-20 bg-white shadow-md mt-[120px] m-5">
           <Options />
           <BodyInfo />
           <CourseInputsAndPrace />
