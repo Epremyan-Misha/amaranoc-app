@@ -10,6 +10,9 @@ function HeaderInfo() {
     { id?: string; title: string }[]
   >([]);
 
+  const [isLangOpen, setIsLangOpen] = useState(false); 
+
+
   const favorites = useFavoritesStore((state) => state.favorites);
   const removeFavorite = useFavoritesStore((state) => state.removeFavorite);
   const isModalOpen = useFavoritesStore((state) => state.isModalOpen);
@@ -32,23 +35,43 @@ function HeaderInfo() {
 
   return (
     <div className="flex items-center justify-end gap-8 relative z-50 h-[60px]">
-      <div className="flex items-center gap-16">
-        {infoForHeader.map((info, index) => (
-          <h4
-            key={info.id ?? index}
-            className="text-lg cursor-pointer hover:border-b-2 border-orange-500 pb-1 transition"
-          >
-            {info.title}
-          </h4>
-        ))}
+    <div className="flex items-center gap-16">
+  {infoForHeader.map((info, index) => (
+    <h4
+      key={info.id ?? index}
+      className="text-lg cursor-pointer hover:border-b-2 border-orange-500 pb-1 transition"
+    >
+      {info.title}
+    </h4>
+  ))}
 
-        <Link
-          to="/login"
-          className="text-red-600 hover:border-b-2 border-red-500 pb-1 transition"
+  <Link to="/login" className="flex items-center">
+    <img
+      src="/images/people.png"
+      alt="Դուրս գալ"
+      className="w-7 h-7 cursor-pointer hover:opacity-80 transition"
+    />
+  </Link>
+  <div
+          className="relative flex items-center cursor-pointer"
+          onClick={() => setIsLangOpen(!isLangOpen)}
         >
-          Դուրս գալ
-        </Link>
-      </div>
+          <img
+            src="/images/globus.png"
+            alt="Language"
+            className="w-7 h-7 hover:opacity-80 transition"
+          />
+
+          {isLangOpen && (
+            <div className="absolute right-0 top-10 w-[150px] bg-white rounded-lg shadow-lg border p-3 space-y-2 z-50">
+              <p className="cursor-pointer hover:text-orange-500">ENG</p>
+              <p className="cursor-pointer hover:text-orange-500">РУС</p>
+              <p className="cursor-pointer hover:text-orange-500">Հայ</p>
+            </div>
+          )}
+        </div>
+</div>
+
 
       <div
         className="relative cursor-pointer flex items-center"

@@ -1,77 +1,56 @@
-import React, { useState, useEffect } from "react";
-import { FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
+import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import DatePicker from "react-datepicker";
+import { housesData } from "../data";
 import "leaflet/dist/leaflet.css";
-import "react-datepicker/dist/react-datepicker.css";
 
-function MapAndDate() {
+function MapWithHouses() {
   const [showMap, setShowMap] = useState(false);
-  const [showDate, setShowDate] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (!target.closest(".map-popover") && !target.closest(".map-icon")) {
-        setShowMap(false);
-      }
-      if (!target.closest(".date-popover") && !target.closest(".date-icon")) {
-        setShowDate(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const defaultLat = 40.1776;
+  const defaultLng = 44.5126;
 
   return (
-    <div className="flex gap-6 mt-35 ml-10">
-      <div className="relative">
-        <FaMapMarkerAlt
-          className="map-icon text-black text-3xl cursor-pointer hover:scale-110 transition"
-          onClick={() => setShowMap(!showMap)}
-        />
-        {showMap && (
-          <div className="map-popover absolute top-10 left-0 w-[500px] h-[350px] bg-white shadow-lg border rounded-xl overflow-hidden z-50">
-            <MapContainer
-              center={[40.1776, 44.5126]}
-              zoom={13}
-              scrollWheelZoom={false}
-              className="w-full h-full"
-            >
-              <TileLayer
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              <Marker position={[40.1776, 44.5126]}>
-                <Popup>Էստեղ կլինի քո տունը 🏠</Popup>
-              </Marker>
-            </MapContainer>
-          </div>
-        )}
-      </div>
+    <div className="relative flex flex-col gap-2 mt-30">
+      <button
+        onClick={() => setShowMap(!showMap)}
+        className="px-4 py-2 bg-black text-white rounded-lg"
+      >
+        Քարտեզ
+      </button>
 
-      <div className="relative">
-        <FaCalendarAlt
-          className="date-icon text-black text-3xl cursor-pointer hover:scale-110 transition"
-          onClick={() => setShowDate(!showDate)}
-        />
-        {showDate && (
-          <div className="date-popover absolute top-10 left-0">
-            <DatePicker
-              selected={selectedDate}
-              onChange={(date) => setSelectedDate(date)}
-              dateFormat="dd/MM/yyyy"
-             
-              open 
-              onClickOutside={() => setShowDate(false)}
+      {showMap && (
+        <div className="absolute top-12 left-0 w-[500px] h-[350px] bg-white border border-gray-300 rounded-xl shadow-lg overflow-auto z-50">
+          <MapContainer
+            center={[defaultLat, defaultLng]}
+            zoom={12}
+            scrollWheelZoom={false}
+            className="w-full h-full"
+          >
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-          </div>
-        )}
-      </div>
+
+            {housesData.map((house, index) => {
+              const lat = defaultLat + (index * 0.005); // նուրբ տարբերակ demo-ի համար
+              const lng = defaultLng + (index * 0.005);
+              return (
+                <Marker key={house.id} position={[lat, lng]}>
+                  <Popup className="flex flex-col items-center">
+                    <img
+                      src={house.image}
+                      alt={house.title}
+                      className="w-24 h-16 mb-1 rounded"
+                    />
+                    <span className="font-medium">{house.title}</span>
+                  </Popup>
+                </Marker>
+              );
+            })}
+          </MapContainer>
+        </div>
+      )}
     </div>
   );
 }
 
-export default MapAndDate;
+export default MapWithHouses;

@@ -7,10 +7,8 @@ import "swiper/css";
 import { Pagination, Autoplay } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
 
-// 🟢 հնարավոր pool տեսակներ
 const poolOptions = ["Բաց", "Փակ", "Տաքացվող", "Առանց լողավազան"];
 
-// 🟢 ամեն տանը random rooms (1–6) և random poolType ավելացնենք
 const housesWithExtras = housesData.map((house) => ({
   ...house,
   rooms: house.rooms ?? Math.floor(Math.random() * 6) + 1,
@@ -103,7 +101,7 @@ export default function Houses({ layout, searchValue }: HousesProps) {
           return (
             <div
               key={house.id}
-              className={`shadow-md p-[10px] cursor-pointer transform transition hover:scale-[1.02] ${
+              className={`shadow-md p-[10px] cursor-pointer  rounded-[15px] transform transition hover:scale-[1.02] ${
                 favorite ? "bg-gray-100" : "bg-white"
               }`}
               style={{ width: "100%", maxWidth: `${maxCardWidth}px` }}
@@ -114,11 +112,11 @@ export default function Houses({ layout, searchValue }: HousesProps) {
                 pagination={{ clickable: true }}
                 autoplay={{ delay: 2500, disableOnInteraction: false }}
                 loop={true}
-                className="w-full h-[250px] rounded-[15px]"
+                className="w-full h-[300px] rounded-[15px]"
               >
                 <SwiperSlide>
                   <img
-                    className="w-full h-[250px] object-cover rounded-[15px]"
+                    className="w-full h-[300px] object-cover rounded-[15px]"
                     src={`/${house.image}`}
                     alt={house.title}
                   />
@@ -126,7 +124,7 @@ export default function Houses({ layout, searchValue }: HousesProps) {
                 {house.sliderImages?.map((img, i) => (
                   <SwiperSlide key={i}>
                     <img
-                      className="w-full h-[250px] object-cover rounded-[15px]"
+                      className="w-full h-[300px] object-cover rounded-[15px]"
                       src={`/${img}`}
                       alt={`${house.title} ${i + 1}`}
                     />
@@ -134,40 +132,56 @@ export default function Houses({ layout, searchValue }: HousesProps) {
                 ))}
               </Swiper>
 
-              <div className="mt-2 ml-3 flex items-center justify-between">
-                <div>
-                  <h2 className="font-bold text-lg">{house.title}</h2>
-                  <p>{house.people} people</p>
-                  <p>{house.rooms} սենյակ</p>
-                  <p>Լողավազան: {house.poolType}</p>
-                  <p className="mt-3 text-2xl">{house.prace}</p>
-                </div>
+<div className="mt-2 ml-3 flex items-center justify-between">
+  <div className="space-y-2">
+    <div className="flex items-center gap-2">
+      <h2 className="font-bold text-lg">{house.title}</h2>
+      <img
+        src="/images/location.png"
+        alt="location"
+        className="w-8 h-8"
+      />
+    </div>
 
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (favorite) removeFavorite(house.id.toString());
-                    else
-                      addFavorite({
-                        id: house.id.toString(),
-                        title: house.title,
-                        image: house.image,
-                      });
-                    setModalOpen(!favorite);
-                  }}
-                  className="ml-3"
-                >
-                  <img
-                    src={
-                      favorite
-                        ? "/housesImages/heart.png"
-                        : "/housesImages/heart1.png"
-                    }
-                    alt="favorite"
-                    className="w-7 h-7"
-                  />
-                </button>
-              </div>
+    <div className="flex items-center gap-2 text-gray-700">
+      <img src="/images/iconPeople.png" alt="people" className="w-8 h-8" />
+      <p>{house.people} </p>
+    </div>
+
+
+
+    <div className="flex items-center gap-2 mt-2 text-2xl font-semibold">
+      <img src="/images/prace.png" alt="price" className="w-8 h-8" />
+      <p>{house.prace}</p>
+    </div>
+  </div>
+
+  <button
+    onClick={(e) => {
+      e.stopPropagation();
+      if (favorite) removeFavorite(house.id.toString());
+      else
+        addFavorite({
+          id: house.id.toString(),
+          title: house.title,
+          image: house.image,
+        });
+      setModalOpen(!favorite);
+    }}
+    className="ml-3"
+  >
+    <img
+      src={
+        favorite
+          ? "/housesImages/heart.png"
+          : "/housesImages/heart1.png"
+      }
+      alt="favorite"
+      className="w-7 h-7"
+    />
+  </button>
+</div>
+
             </div>
           );
         })}

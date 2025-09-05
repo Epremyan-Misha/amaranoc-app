@@ -12,7 +12,7 @@ import PagesImg from "../components/ComponentPages";
 import CourseInputsAndPrace from "../components/ComponentForCourseInputsAndPrace";
 import useBodyLogic from "../components/ComponentBodyLogic";
 import AppLayoutManager from "../components/AppLayoutManager";
-import MapAndDate from "../components/ComponentForMapAndDate"; 
+import MapWithHouses from "../components/ComponentForMapAndDate";
 
 function Body({ searchValue }: { searchValue: string }) {
   const {
@@ -46,7 +46,7 @@ function Body({ searchValue }: { searchValue: string }) {
           <Pool />
           <AdvantagesMain />
         </div>
-          <MapAndDate />
+          <MapWithHouses />
         <div className="flex-1 flex flex-col gap-16 -ml-[150px] mt-[550px]">
           <AppLayoutManager searchValue={searchValue} />
           <PagesImg />
