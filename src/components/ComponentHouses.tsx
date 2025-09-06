@@ -101,7 +101,7 @@ export default function Houses({ layout, searchValue }: HousesProps) {
           return (
             <div
               key={house.id}
-              className={`shadow-md p-[10px] cursor-pointer  rounded-[15px] transform transition hover:scale-[1.02] ${
+              className={`shadow-md p-[10px] cursor-pointer rounded-[15px] transform transition hover:scale-[1.02] ${
                 favorite ? "bg-gray-100" : "bg-white"
               }`}
               style={{ width: "100%", maxWidth: `${maxCardWidth}px` }}
@@ -117,7 +117,7 @@ export default function Houses({ layout, searchValue }: HousesProps) {
                 <SwiperSlide>
                   <img
                     className="w-full h-[300px] object-cover rounded-[15px]"
-                    src={`/${house.image}`}
+                    src={house.image}
                     alt={house.title}
                   />
                 </SwiperSlide>
@@ -125,63 +125,68 @@ export default function Houses({ layout, searchValue }: HousesProps) {
                   <SwiperSlide key={i}>
                     <img
                       className="w-full h-[300px] object-cover rounded-[15px]"
-                      src={`/${img}`}
+                      src={img}
                       alt={`${house.title} ${i + 1}`}
                     />
                   </SwiperSlide>
                 ))}
               </Swiper>
 
-<div className="mt-2 ml-3 flex items-center justify-between">
-  <div className="space-y-2">
-    <div className="flex items-center gap-2">
-      <h2 className="font-bold text-lg">{house.title}</h2>
-      <img
-        src="/images/location.png"
-        alt="location"
-        className="w-8 h-8"
-      />
-    </div>
+              <div className="mt-2 ml-3 flex items-center justify-between">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <h2 className="font-bold text-lg">{house.title}</h2>
+                    <img
+                      src="/images/location.png"
+                      alt="location"
+                      className="w-8 h-8"
+                    />
+                  </div>
 
-    <div className="flex items-center gap-2 text-gray-700">
-      <img src="/images/iconPeople.png" alt="people" className="w-8 h-8" />
-      <p>{house.people} </p>
-    </div>
+                  <div className="flex items-center gap-2 text-gray-700">
+                    <img
+                      src="/images/iconPeople.png"
+                      alt="people"
+                      className="w-8 h-8"
+                    />
+                    <p>{house.people}</p>
+                  </div>
 
+                  <div className="flex items-center gap-2 mt-2 text-2xl font-semibold">
+                    <img
+                      src="/images/prace.png"
+                      alt="price"
+                      className="w-8 h-8"
+                    />
+                    <p>{house.prace}</p>
+                  </div>
+                </div>
 
-
-    <div className="flex items-center gap-2 mt-2 text-2xl font-semibold">
-      <img src="/images/prace.png" alt="price" className="w-8 h-8" />
-      <p>{house.prace}</p>
-    </div>
-  </div>
-
-  <button
-    onClick={(e) => {
-      e.stopPropagation();
-      if (favorite) removeFavorite(house.id.toString());
-      else
-        addFavorite({
-          id: house.id.toString(),
-          title: house.title,
-          image: house.image,
-        });
-      setModalOpen(!favorite);
-    }}
-    className="ml-3"
-  >
-    <img
-      src={
-        favorite
-          ? "/housesImages/heart.png"
-          : "/housesImages/heart1.png"
-      }
-      alt="favorite"
-      className="w-7 h-7"
-    />
-  </button>
-</div>
-
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (favorite) removeFavorite(house.id.toString());
+                    else
+                      addFavorite({
+                        id: house.id.toString(),
+                        title: house.title,
+                        image: house.image,
+                      });
+                    setModalOpen(!favorite);
+                  }}
+                  className="ml-3"
+                >
+                  <img
+                    src={
+                      favorite
+                        ? "/housesImages/heart.png"
+                        : "/housesImages/heart1.png"
+                    }
+                    alt="favorite"
+                    className="w-7 h-7"
+                  />
+                </button>
+              </div>
             </div>
           );
         })}

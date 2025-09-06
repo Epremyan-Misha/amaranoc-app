@@ -57,9 +57,12 @@ const App: React.FC = () => {
                 <LayoutWrapper>
                   <HouseDetail key={window.location.pathname} />
                   <div className="mt-[250px] m-15">
-                    <h1 className="m-10 ml-[700px] text-[25px]">
-                      ----------- Նման Առաջարկներ -----------
-                    </h1>
+                    <h1 className="flex items-center my-10 text-[25px] font-semibold">
+  <span className="flex-grow border-t border-gray-400 mr-4"></span>
+  Նման Առաջարկներ
+  <span className="flex-grow border-t border-gray-400 ml-4"></span>
+</h1>
+
                     <Houses />
                   </div>
                 </LayoutWrapper>
