@@ -6,12 +6,8 @@ import { useFavoritesStore } from "../store/useFavoritesStore";
 const baseUrl = "https://myproject-73982-default-rtdb.firebaseio.com/";
 
 function HeaderInfo() {
-  const [infoForHeader, setInfoForHeader] = useState<
-    { id?: string; title: string }[]
-  >([]);
-
-  const [isLangOpen, setIsLangOpen] = useState(false); 
-
+  const [infoForHeader, setInfoForHeader] = useState<{ id?: string; title: string }[]>([]);
+  const [isLangOpen, setIsLangOpen] = useState(false);
 
   const favorites = useFavoritesStore((state) => state.favorites);
   const removeFavorite = useFavoritesStore((state) => state.removeFavorite);
@@ -33,26 +29,43 @@ function HeaderInfo() {
       .catch((err) => console.error("Error fetching header info:", err));
   }, []);
 
+  const getPath = (title: string) => {
+    switch (title.toLowerCase()) {
+      case "գլխավոր":
+        return "/";
+      case "զեղչեր":
+        return "/sales";
+      case "ծառայություններ":
+        return "/services";
+      case "մեր մասին":
+        return "/about-us";
+      default:
+        return "/";
+    }
+  };
+
   return (
     <div className="flex items-center justify-end gap-8 relative z-50 h-[60px]">
-    <div className="flex items-center gap-16">
-  {infoForHeader.map((info, index) => (
-    <h4
-      key={info.id ?? index}
-      className="text-lg cursor-pointer hover:border-b-2 border-orange-500 pb-1 transition"
-    >
-      {info.title}
-    </h4>
-  ))}
+      <div className="flex items-center gap-16">
+        {infoForHeader.map((info, index) => (
+          <Link
+            key={info.id ?? index}
+            to={getPath(info.title)}
+            className="text-lg cursor-pointer hover:border-b-2 border-orange-500 pb-1 transition"
+          >
+            {info.title}
+          </Link>
+        ))}
 
-  <Link to="/login" className="flex items-center">
-    <img
-      src="/images/people.png"
-      alt="Դուրս գալ"
-      className="w-7 h-7 cursor-pointer hover:opacity-80 transition"
-    />
-  </Link>
-  <div
+        <Link to="/login" className="flex items-center">
+          <img
+            src="/images/people.png"
+            alt="Դուրս գալ"
+            className="w-7 h-7 cursor-pointer hover:opacity-80 transition"
+          />
+        </Link>
+
+        <div
           className="relative flex items-center cursor-pointer"
           onClick={() => setIsLangOpen(!isLangOpen)}
         >
@@ -70,9 +83,7 @@ function HeaderInfo() {
             </div>
           )}
         </div>
-</div>
-
-
+      </div>
       <div
         className="relative cursor-pointer flex items-center"
         onClick={() => setModalOpen(!isModalOpen)}

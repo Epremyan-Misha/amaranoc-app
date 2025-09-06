@@ -28,7 +28,7 @@ function Options(): JSX.Element {
 
   return (
     <div className="relative w-[1050px] h-[140px] mt-15 ml-[400px] border-t border-b border-[rgb(248,248,248)] flex items-center">
-      {/* Left Arrow */}
+      
       <button
         onClick={scrollLeft}
         className="absolute left-0 top-1/2 -translate-y-1/2 bg-white text-black p-2 rounded-full shadow cursor-pointer z-10 hover:bg-gray-200 transition"
@@ -36,7 +36,6 @@ function Options(): JSX.Element {
         &#8592;
       </button>
 
-      {/* Right Arrow */}
       <button
         onClick={scrollRight}
         className="absolute right-0 top-1/2 -translate-y-1/2 bg-white text-black p-2 rounded-full shadow cursor-pointer z-10 hover:bg-gray-200 transition"
